@@ -3,6 +3,8 @@
 A full stack expense tracker where you can log in, add your expenses, and see
 where your money goes with simple charts.
 
+🔗 **Live demo:** https://03-expense-tracker-dun.vercel.app/
+
 ## Tech
 - **Frontend:** React, TypeScript, Vite, Chart.js
 - **Backend:** Node.js, Express
