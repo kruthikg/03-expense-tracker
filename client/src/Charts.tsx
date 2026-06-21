@@ -24,7 +24,26 @@ type Props = {
   expenses: Expense[];
 };
 
-const colors = ["#2da44e", "#0366d6", "#e36209", "#6f42c1", "#d73a49", "#586069"];
+// soft pastel fills with a matching solid border for each bar / slice
+const fillColors = [
+  "rgba(255, 99, 132, 0.2)",
+  "rgba(255, 159, 64, 0.2)",
+  "rgba(255, 205, 86, 0.2)",
+  "rgba(75, 192, 192, 0.2)",
+  "rgba(54, 162, 235, 0.2)",
+  "rgba(153, 102, 255, 0.2)",
+  "rgba(201, 203, 207, 0.2)",
+];
+
+const borderColors = [
+  "rgb(255, 99, 132)",
+  "rgb(255, 159, 64)",
+  "rgb(255, 205, 86)",
+  "rgb(75, 192, 192)",
+  "rgb(54, 162, 235)",
+  "rgb(153, 102, 255)",
+  "rgb(201, 203, 207)",
+];
 
 function Charts({ expenses }: Props) {
   // total spent in each category
@@ -46,7 +65,9 @@ function Charts({ expenses }: Props) {
     datasets: [
       {
         data: Object.values(byCategory),
-        backgroundColor: colors,
+        backgroundColor: fillColors,
+        borderColor: borderColors,
+        borderWidth: 1,
       },
     ],
   };
@@ -57,7 +78,9 @@ function Charts({ expenses }: Props) {
       {
         label: "Spent",
         data: months.map((m) => byMonth[m]),
-        backgroundColor: "#0366d6",
+        backgroundColor: fillColors,
+        borderColor: borderColors,
+        borderWidth: 1,
       },
     ],
   };
