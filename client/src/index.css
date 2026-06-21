@@ -201,3 +201,48 @@ body {
   color: #c0392b;
   border-color: #f1c0c0;
 }
+
+/* ---------- filters ---------- */
+.filters {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.filters label {
+  font-size: 14px;
+  color: #586069;
+}
+
+.filters select {
+  margin-left: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* ---------- charts ---------- */
+.charts {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.chart-box {
+  background-color: white;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  padding: 20px;
+  flex: 1;
+  min-width: 280px;
+  max-width: 380px;
+  text-align: center;
+}
+
+.chart-box h3 {
+  margin-top: 0;
+  font-size: 16px;
+}
