@@ -1,23 +1,27 @@
-import { useEffect, useState } from "react";
-import api from "./api.ts";
+import { useState } from "react";
+import type { User } from "./types.ts";
+import Auth from "./Auth.tsx";
+import Dashboard from "./Dashboard.tsx";
 
 function App() {
-  const [message, setMessage] = useState("");
+  // remember the logged in user across page reloads
+  const [user, setUser] = useState<User | null>(() => {
+    const saved = localStorage.getItem("user");
+    return saved ? JSON.parse(saved) : null;
+  });
 
-  // quick check that the frontend can talk to the backend
-  useEffect(() => {
-    api
-      .get("/api/ping")
-      .then((res) => setMessage(res.data.message))
-      .catch(() => setMessage("Could not reach the server."));
-  }, []);
+  function handleLogout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setUser(null);
+  }
 
-  return (
-    <div className="container">
-      <h1>Expense Tracker</h1>
-      <p>Backend says: {message}</p>
-    </div>
-  );
+  // not logged in -> show the login / signup page
+  if (!user) {
+    return <Auth onAuth={setUser} />;
+  }
+
+  return <Dashboard user={user} onLogout={handleLogout} />;
 }
 
 export default App;
